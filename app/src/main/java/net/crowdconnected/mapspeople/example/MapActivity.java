@@ -50,16 +50,16 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 0);
         }
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-        mapView = mapFragment.getView();
-        MapsIndoors.initialize(getApplicationContext(), MAPSPEOPLE_API_KEY);
-        MapsIndoors.setGoogleAPIKey(GOOGLE_API_KEY);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+        mapView = mapFragment.getView();
+        MapsIndoors.initialize(getApplicationContext(), MAPSPEOPLE_API_KEY);
+        MapsIndoors.setGoogleAPIKey(GOOGLE_API_KEY);
         if (CrowdConnected.getInstance() == null) {
             Log.i(LOG_TAG, "Colocator Instance is null, starting Colocator");
             Configuration configuration = new ConfigurationBuilder()
