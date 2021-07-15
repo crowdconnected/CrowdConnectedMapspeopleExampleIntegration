@@ -37,8 +37,8 @@ dependencies {
     implementation 'com.mapspeople.mapsindoors:mapsindoorssdk:3.8.2'
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
 
-    implementation 'net.crowdconnected.android.core:android-core:0.7'
-    implementation 'net.crowdconnected.android.ips:android-ips:0.7'
+    implementation 'net.crowdconnected.android.core:android-core:0.9.1'
+    implementation 'net.crowdconnected.android.ips:android-ips:0.9.1'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

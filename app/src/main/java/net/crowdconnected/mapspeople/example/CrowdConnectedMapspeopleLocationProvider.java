@@ -32,7 +32,7 @@ public class CrowdConnectedMapspeopleLocationProvider implements PositionProvide
         CrowdConnected.getInstance().registerPositionCallback(position -> {
             activity.runOnUiThread(() -> {
                 if (onPositionUpdateListener != null) {
-                    MPPositionResult positionResult = new MPPositionResult(new Point(position.getLat(), position.getLng()), 0, 0, position.getFloor());
+                    MPPositionResult positionResult = new MPPositionResult(new Point(position.getLatitude(), position.getLongitude()), 0, 0, position.getFloor());
                     onPositionUpdateListener.onPositionUpdate(positionResult);
                 }
             });

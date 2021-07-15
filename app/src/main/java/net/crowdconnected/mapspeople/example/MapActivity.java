@@ -69,8 +69,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                     .withStatusCallback(reason -> Log.i(LOG_TAG, "Start up failure: " + reason))
                     .addModule(new IPSModule())
                     .build();
-            CrowdConnected.start(this, configuration);
-            CrowdConnected.getInstance().navigation(true);
+            CrowdConnected.start(getApplication(), configuration);
         }
     }
 
