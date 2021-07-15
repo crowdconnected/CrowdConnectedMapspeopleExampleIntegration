@@ -35,9 +35,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     private static final String MAPSPEOPLE_API_KEY = "YOUR_MAPSPEOPLE_API_KEY";
     private static final String GOOGLE_API_KEY = "YOUR_GOOGLE_API_KEY";
-    private static final String CROWDCONNECTED_APP_KEY = "YOUR_CROWDCONNECTED_APP_KEY";
-    private static final String CROWDCONNECTED_TOKEN = "YOUR_CROWDCONNECTED_TOKEN";
-    private static final String CROWDCONNECTED_SECRET = "YOUR_CROWDCONNECTED_SECRET";
 
     private View mapView;
     private GoogleMap googleMap;
@@ -60,26 +57,11 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mapView = mapFragment.getView();
         MapsIndoors.initialize(getApplicationContext(), MAPSPEOPLE_API_KEY);
         MapsIndoors.setGoogleAPIKey(GOOGLE_API_KEY);
-        if (CrowdConnected.getInstance() == null) {
-            Log.i(LOG_TAG, "Colocator Instance is null, starting Colocator");
-            Configuration configuration = new ConfigurationBuilder()
-                    .withAppKey(CROWDCONNECTED_APP_KEY)
-                    .withToken(CROWDCONNECTED_TOKEN)
-                    .withSecret(CROWDCONNECTED_SECRET)
-                    .withStatusCallback(reason -> Log.i(LOG_TAG, "Start up failure: " + reason))
-                    .addModule(new IPSModule())
-                    .build();
-            CrowdConnected.start(getApplication(), configuration);
-        }
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        CrowdConnected crowdConnectedInstance = CrowdConnected.getInstance();
-        if (crowdConnectedInstance != null) {
-            crowdConnectedInstance.stop();
-        }
         MapsIndoors.onApplicationTerminate();
     }
 
